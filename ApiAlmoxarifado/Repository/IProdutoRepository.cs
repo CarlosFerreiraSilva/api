@@ -6,6 +6,8 @@ namespace ApiAlmoxarifado.Repository
     {
         List<Produto> GetAll();
 
-        void Add (Produto produto); 
+        void Add (Produto produto);
+        void Update(Produto produto);
+        void Delete(Produto produto);
     }
 }

@@ -7,5 +7,8 @@ namespace ApiAlmoxarifado.Repository
         List<Categoria> GetAll();
 
         void Add(Categoria categoria);
+
+        void Delete(Categoria categoria);
+        void Update(Categoria categoria);
     }
 }

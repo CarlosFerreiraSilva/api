@@ -3,28 +3,28 @@ using ApiAlmoxarifado.Models;
 
 namespace ApiAlmoxarifado.Repository
 {
-    public class CategoriaRepository:ICategoriaRepository
+    public class CategoriaMotivoRepository:ICategoriaMotivoRepository
     {
         ConexaoSQL bdConexao = new ConexaoSQL();
 
-        public void Add(Categoria categoria)
+        public void Add(CategoriaMotivo categoria)
         {
             bdConexao.Add(categoria);
             bdConexao.SaveChanges();
         }
-        public List<Categoria> GetAll()
+        public List<CategoriaMotivo> GetAll()
         {
-            return bdConexao.Categoria.ToList();
+            return bdConexao.CategoriaMotivo.ToList();
         }
 
-        public void Delete(Categoria Model)
+        public void Delete(CategoriaMotivo Model)
         {
             bdConexao.Remove(Model);
             bdConexao.SaveChangesAsync();
- 
+
         }
 
-        public void Update(Categoria Model)
+        public void Update(CategoriaMotivo Model)
         {
             bdConexao.Update(Model);
             bdConexao.SaveChanges();

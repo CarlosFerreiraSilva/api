@@ -16,5 +16,17 @@ namespace ApiAlmoxarifado.Repository
         {
             return bdConexao.Departamento.ToList();
         }
+
+        public void Delete(Departamento departamento)
+        {
+            bdConexao.Remove(departamento);
+            bdConexao.SaveChanges();
+        }
+
+        public void Update(Departamento Model)
+        {
+            bdConexao.Update(Model);
+            bdConexao.SaveChanges();
+        }
     }
 }

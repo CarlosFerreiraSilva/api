@@ -17,36 +17,6 @@ namespace ApiAlmoxarifado.Controllers
         }
 
         [HttpGet]
-        [Route("Hello")]
-        public IActionResult Hello()
-        {
-            return Ok("Hello Mundo");
-        }
-
-        [HttpGet]
-        [Route("GetAllFake")]
-        public IActionResult GetAllFake()
-        {
-            var produtos = new List<Produto>();
-            {
-                new Produto()
-                {
-                    id = 1,
-                    nome = "PC HP",
-                    estoque = 10
-                };
-                new Produto()
-                {
-                    id = 2,
-                    nome = "PC DELL",
-                    estoque = 20
-                };
-            };
-            return Ok(produtos);
-
-        }
-
-        [HttpGet]
         [Route("GetAll")]
         public IActionResult GetAll()
         {
@@ -103,6 +73,30 @@ namespace ApiAlmoxarifado.Controllers
         public IActionResult GetProduto(int id)
         {
             return Ok(_produtoRepository.GetAll().Find(x => x.id == id));
+        }
+
+        [HttpDelete]
+        [Route("DeletarProdutoSemFoto")]
+        public IActionResult DeletarProdutoSemFoto(int id)
+        {
+            var categoria = _produtoRepository.GetAll().Find(x => x.id == id);
+
+            _produtoRepository.Delete(categoria);
+            return Ok("Atualizado Com Sucesso");
+        }
+
+        [HttpPut]
+        [Route("AtualizarProdutoSemFoto")]
+        public IActionResult AtualizarProdutoSemFoto(ProdutoViewModelUpdateSemFoto produto)
+        {
+            Produto produtoatualizar = new Produto()
+            {
+                id = produto.id,
+                nome = produto.nome,
+                estoque = produto.estoque
+            };
+            _produtoRepository.Update(produtoatualizar);
+            return Ok("Atualizado Com Sucesso");
         }
 
         [HttpGet]

@@ -23,6 +23,32 @@ namespace ApiAlmoxarifado.Controllers
             return Ok(_departamentoRepository.GetAll());
         }
 
+        [HttpGet]
+        [Route("{id}/GetDepartamento")]
+        public IActionResult GetCategoria(int id)
+        {
+            return Ok(_departamentoRepository.GetAll().Find(x => x.depid == id));
+        }
+
+        [HttpPut]
+        [Route("GetDepartamentoUpdate")]
+        public IActionResult CategoriaUpdate(Departamento categoria)
+        {
+            _departamentoRepository.Update(categoria);
+            return Ok("Sucesso");
+        }
+
+    
+        [HttpDelete]
+        [Route("DeletarCategoria")]
+        public IActionResult DeletarDepartamento(int produto)
+        {
+            var categoria = _departamentoRepository.GetAll().Find(x => x.depid == produto);
+
+            _departamentoRepository.Delete(categoria);
+            return Ok("Atualizado Com Sucesso");
+        }
+
         [HttpPost]
         [Route("AdicionarDepartamento")]
         public IActionResult AdicionarDepartamento(Departamento produto)

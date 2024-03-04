@@ -7,5 +7,8 @@ namespace ApiAlmoxarifado.Repository
         List<Funcionario> GetAll();
 
         void Add(Funcionario funcionario);
+
+        void Update(Funcionario funcionario);
+        void Delete(Funcionario funcionario);
     }
 }

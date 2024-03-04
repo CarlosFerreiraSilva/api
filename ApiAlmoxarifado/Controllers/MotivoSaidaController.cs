@@ -1,28 +1,26 @@
 ﻿using ApiAlmoxarifado.Models;
 using ApiAlmoxarifado.Repository;
-using ApiAlmoxarifado.ViewModel;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace ApiAlmoxarifado.Controllers
 {
     [ApiController]
-    [Route("api/v1/categoria")]
-    public class CategoriaController : ControllerBase
+    [Route("api/v1/motivosaida")]
+    public class MotivoSaidaController : Controller
     {
-        private readonly ICategoriaRepository _categoriaRepository;
+        private readonly IMotivoSaidaRepository _motivosaidaRepository;
 
-        public CategoriaController(ICategoriaRepository categoriaRepository)
+        public MotivoSaidaController(IMotivoSaidaRepository categoriaRepository)
         {
-            _categoriaRepository = categoriaRepository;
+            _motivosaidaRepository = categoriaRepository;
         }
 
-     
+
         [HttpGet]
         [Route("GetAll")]
         public IActionResult GetAll()
         {
-            return Ok(_categoriaRepository.GetAll());
+            return Ok(_motivosaidaRepository.GetAll());
         }
 
 
@@ -31,15 +29,15 @@ namespace ApiAlmoxarifado.Controllers
         [Route("{id}/GetCategoria")]
         public IActionResult GetCategoria(int id)
         {
-            return Ok(_categoriaRepository.GetAll().Find(x => x.categoriaid == id));
+            return Ok(_motivosaidaRepository.GetAll().Find(x => x.motID == id));
         }
 
         [HttpPut]
         [Route("GetCategoriaUpdate")]
-        public IActionResult Update(Categoria categoria)
+        public IActionResult Update(MotivoSaida categoria)
         {
-            _categoriaRepository.Update(categoria);
-            return Ok("Sucesso"); 
+            _motivosaidaRepository.Update(categoria);
+            return Ok("Sucesso");
         }
 
 
@@ -48,21 +46,21 @@ namespace ApiAlmoxarifado.Controllers
         [Route("DeletarCategoria")]
         public IActionResult DeletarProdutoSemFoto(int produto)
         {
-            var categoria = _categoriaRepository.GetAll().Find(x => x.categoriaid == produto);
+            var categoria = _motivosaidaRepository.GetAll().Find(x => x.motID == produto);
 
-            _categoriaRepository.Delete(categoria);
+            _motivosaidaRepository.Delete(categoria);
             return Ok("Atualizado Com Sucesso");
         }
 
         [HttpPost]
         [Route("AdicionarCategoria")]
-        public IActionResult AdicionarCategoria(Categoria produto)
+        public IActionResult AdicionarCategoria(MotivoSaida produto)
         {
             try
             {
-                _categoriaRepository.Add
+                _motivosaidaRepository.Add
                 (
-                new Categoria() { descricao = produto.descricao}
+                new MotivoSaida() { motDescricao = produto.motDescricao, categoriaid = produto.categoriaid }
                 );
 
                 return Ok("Cadastrado com Sucesso");
@@ -74,6 +72,5 @@ namespace ApiAlmoxarifado.Controllers
             }
 
         }
-
     }
 }
