@@ -14,5 +14,6 @@ namespace ApiAlmoxarifado.Models
         public string? photourl { get; set;}
 
         public int? fk_cod_categoria { get; set; }
+        public List<ItensRequisicao> itens { get; set; }
     }
 }
