@@ -36,5 +36,5 @@ namespace ApiAlmoxarifado.Controllers
         }
     }
    
-    }
+    
 }

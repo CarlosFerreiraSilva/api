@@ -29,7 +29,7 @@ namespace ApiAlmoxarifado.Controllers
         [Route("{id}/GetCategoriaMotivo")]
         public IActionResult GetCategoria(int id)
         {
-            return Ok(_categoriaMotivoRepository.GetAll().Find(x => x.camID == id));
+            return Ok(_categoriaMotivoRepository.GetAll().Find(x => x.Codigo == id));
         }
 
         [HttpPut]
@@ -46,7 +46,7 @@ namespace ApiAlmoxarifado.Controllers
         [Route("DeletarCategoriaMotivo")]
         public IActionResult DeletarProdutoSemFoto(int produto)
         {
-            var categoria = _categoriaMotivoRepository.GetAll().Find(x => x.camID == produto);
+            var categoria = _categoriaMotivoRepository.GetAll().Find(x => x.Codigo == produto);
 
             _categoriaMotivoRepository.Delete(categoria);
             return Ok("Atualizado Com Sucesso");
@@ -60,7 +60,7 @@ namespace ApiAlmoxarifado.Controllers
             {
                 _categoriaMotivoRepository.Add
                 (
-                new CategoriaMotivo() { camDescricao = produto.camDescricao }
+                new CategoriaMotivo() { Descricao = produto.Descricao }
                 );
 
                 return Ok("Cadastrado com Sucesso");
