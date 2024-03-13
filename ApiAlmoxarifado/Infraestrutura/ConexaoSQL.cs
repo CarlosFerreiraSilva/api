@@ -51,6 +51,8 @@ namespace ApiAlmoxarifado.Infraestrutura
         public DbSet<Requisicao> Requisicao { get; set; }
         public DbSet<ItensRequisicao> ItensRequisicao { get; set; }
         public DbSet<Motivo> Motivo { get; set; }
-
+        public DbSet<Escolaridade> Escolaridade { get; set; }
+        public DbSet<ItensEntrada> ItensEntrada { get; set; }
+        public DbSet<Entrada> Entrada { get; set; }
     }
 }

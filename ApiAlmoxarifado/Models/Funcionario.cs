@@ -13,6 +13,7 @@ namespace ApiAlmoxarifado.Models
         public string endereço { get; set; }
         public string cidade { get; set; }
         public string uf { get; set; }
+        public int escolaridade_id { get; set; }
 
     }
 }
