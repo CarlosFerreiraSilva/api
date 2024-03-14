@@ -15,5 +15,6 @@ namespace ApiAlmoxarifado.Models
 
         public int? fk_cod_categoria { get; set; }
         public List<ItensRequisicao> itens { get; set; }
+        public List<ItensEntrada> itensEntrada { get; set; }
     }
 }

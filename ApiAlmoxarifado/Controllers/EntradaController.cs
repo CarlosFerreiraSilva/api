@@ -7,7 +7,7 @@ namespace ApiAlmoxarifado.Controllers
 {
     [ApiController]
     [Route("api/v1/entrada")]
-    public class EntradaController:Controller
+    public class EntradaController : Controller
     {
         private readonly IEntradaRepository _entradaRepository;
 

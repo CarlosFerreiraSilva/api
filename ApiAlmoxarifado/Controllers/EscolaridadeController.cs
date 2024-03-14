@@ -58,7 +58,7 @@ namespace ApiAlmoxarifado.Controllers
                 (
                 new Escolaridade()
                 {
-                    codigo= funcionario.codigo,
+                    codigo = funcionario.codigo,
                 }
                 );
 

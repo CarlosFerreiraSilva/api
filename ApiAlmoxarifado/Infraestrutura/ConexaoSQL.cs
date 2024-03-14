@@ -20,7 +20,18 @@ namespace ApiAlmoxarifado.Infraestrutura
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-  
+            modelBuilder.Entity<Entrada>()
+          .HasMany(e => e.produto)
+          .WithOne(e => e.entrada)
+          .HasForeignKey(e => e.codigoEntrada)
+          .HasPrincipalKey(e => e.codigo);
+
+                modelBuilder.Entity<Produto>()
+         .HasMany(e => e.itensEntrada)
+         .WithOne(e => e.produto)
+         .HasForeignKey(e => e.codigoEntrada)
+         .HasPrincipalKey(e => e.id);
+
             modelBuilder.Entity<Requisicao>()
            .HasMany(e => e.itens)
            .WithOne(e => e.requisicao)
@@ -39,8 +50,8 @@ namespace ApiAlmoxarifado.Infraestrutura
            .HasForeignKey(e => e.CodigoCategoriaMotivo)
            .HasPrincipalKey(e => e.Codigo);
         }
-       
-    
+
+
 
         public DbSet<Produto> Produto { get; set; }
         public DbSet<Categoria> Categoria { get; set; }
